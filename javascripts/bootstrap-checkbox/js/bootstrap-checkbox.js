@@ -133,12 +133,8 @@
         },
         
         setChecked: function(checked){
-        	if (checked) {
-				this.$element.get()[0].setAttribute("checked", "checked");
-			} else {
-				this.$element.get()[0].removeAttribute("checked");
-			}
-			this.checkChecked();
+        	this.$element.prop("checked", checked);
+		this.checkChecked();
         },
         
         click: function(event){
