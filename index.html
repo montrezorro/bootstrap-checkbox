@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Bootstrap-checkbox : A checkbox component based on bootstrap framework" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    
+    <script src="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css">
     
     <script src="https://raw.github.com/montrezorro/bootstrap-checkbox/master/js/bootstrap-checkbox.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="https://raw.github.com/montrezorro/bootstrap-checkbox/master/css/bootstrap-checkbox.css">
@@ -19,6 +22,15 @@
     <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css" rel="stylesheet"> -->
     
     <title>Bootstrap-checkbox</title>
+    
+    <style type="text/css">
+      
+    </style>
+    <script type="text/javascript">
+    	$(function(){
+    		prettyPrint();
+    	});
+    </script>
   </head>
 
   <body>
@@ -53,44 +65,49 @@
 
 <p>Create your <code>&lt;input type="checkbox"&gt;</code> with the <code>.checkbox</code> class.</p>
 
-<pre><code>&lt;input type="checkbox" class="chekbox" /&gt;
+<pre class="prettyprint linenums">
+&lt;input type="checkbox" class="chekbox" /&gt;
 &lt;input type="checkbox" class="chekbox" checked="checked"/&gt;
 &lt;input type="checkbox" class="chekbox" disabled="disabled"/&gt;
 &lt;input type="checkbox" class="chekbox" checked="checked" disabled="disabled"/&gt;
-</code></pre>
+</pre>
 
 <p>Enable Bootstrap-checkbox via JavaScript:</p>
 
-<pre><code>$('.checkbox').checkbox();
-</code></pre>
+<pre class="prettyprint linenums">
+$('.checkbox').checkbox();
+</pre>
 
 <p>Or just</p>
 
-<pre><code>$('input[type="checkbox"]').checkbox();
-</code></pre>
+<pre class="prettyprint linenums">
+$('input[type="checkbox"]').checkbox();
+</pre>
 
 <h2>Options</h2>
 
 <p>Options can be passed via data attributes or JavaScript.</p>
 
-<pre><code>$('input[type="checkbox"]').checkbox({
-  buttonStyle: 'btn-link',
-  buttonStyleChecked: 'btn-inverse',
-  checkedClass: 'icon-check',
-  uncheckedClass: 'icon-check-empty',
+<pre class="prettyprint linenums">
+$('input[type="checkbox"]').checkbox({
+   buttonStyle: 'btn-link',
+   buttonStyleChecked: 'btn-inverse',
+   checkedClass: 'icon-check',
+   uncheckedClass: 'icon-check-empty',
 
-  checked: false,
-  enabled: true
+   checked: false,
+   enabled: true
 });
-</code></pre>
+</pre>
 
 <p>You can append or prepend a label via the <code>data-label</code> or <code>data-label-prepend</code> attribute.</p>
 
 <h2>Methods</h2>
 
-<pre><code>$('input[type="checkbox"]').checkbox('click'); // change input's state
+<pre class="prettyprint linenums">
+$('input[type="checkbox"]').checkbox('click'); // change input's state
 $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
-</code></pre>
+</pre>
 
 <h2>Copyright and license</h2>
 
