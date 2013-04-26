@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Bootstrap-checkbox : A checkbox component based on bootstrap framework" />
 
-  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
@@ -15,9 +15,9 @@
     <script src="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css">
     
-    <script src="https://raw.github.com/montrezorro/bootstrap-checkbox/master/js/bootstrap-checkbox.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="https://raw.github.com/montrezorro/bootstrap-checkbox/master/css/bootstrap-checkbox.css">
-    
+	<script src="javascripts/bootstrap-checkbox/js/bootstrap-checkbox.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="javascripts/bootstrap-checkbox/css/bootstrap-checkbox.css">
+
     <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet"> -->
     <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css" rel="stylesheet"> -->
     
@@ -25,6 +25,31 @@
     
     <style type="text/css">
       
+	.bs-docs-example:after{
+		background-color: #F5F5F5;
+		border: 1px solid #DDDDDD;
+		border-radius: 4px 0 4px 0;
+		color: #9DA0A4;
+		content: "Example";
+		font-size: 12px;
+		font-weight: bold;
+		left: -1px;
+		padding: 3px 7px;
+		position: absolute;
+		top: -1px;
+	}
+	.bs-docs-example {
+		background-color: #FFFFFF;
+		border: 1px solid #DDDDDD;
+		border-radius: 4px 4px 4px 4px;
+		margin: 15px 0;
+/* 		padding: 39px 19px 14px; */
+		padding: 39px 3px 14px 13px;
+		position: relative;
+	}
+	.prettyprint.linenums{
+		box-shadow:40px 0 0 #FBFBFC inset,41px 0 0 #ECECF0 inset,0 0 10px rgba(0, 0, 0, 0.1);
+	}
     </style>
     <script type="text/javascript">
     	$(function(){
@@ -66,10 +91,10 @@
 <p>Create your <code>&lt;input type="checkbox"&gt;</code> with the <code>.checkbox</code> class.</p>
 
 <pre class="prettyprint linenums">
-&lt;input type="checkbox" class="chekbox" /&gt;
-&lt;input type="checkbox" class="chekbox" checked="checked"/&gt;
-&lt;input type="checkbox" class="chekbox" disabled="disabled"/&gt;
-&lt;input type="checkbox" class="chekbox" checked="checked" disabled="disabled"/&gt;
+&lt;input type="checkbox" class="checkbox" /&gt;
+&lt;input type="checkbox" class="checkbox" checked="checked"/&gt;
+&lt;input type="checkbox" class="checkbox" disabled="disabled"/&gt;
+&lt;input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/&gt;
 </pre>
 
 <p>Enable Bootstrap-checkbox via JavaScript:</p>
@@ -109,6 +134,28 @@ $('input[type="checkbox"]').checkbox('click'); // change input's state
 $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 </pre>
 
+<h2>Examples</h2>
+
+<pre class="prettyprint bs-docs-example">
+    <input type="checkbox" style="float:left;" />
+    <input type="checkbox" checked="checked" style="float:left;" />
+    <input type="checkbox" disabled="disabled" style="float:left;" />
+    <input type="checkbox" checked="checked" disabled="disabled" style="float:left;" />
+    
+    <code>$('input[type="checkbox"]').checkbox();</code>
+    
+    <input type="checkbox" class="checkbox" />
+    <input type="checkbox" class="checkbox" checked="checked"/>
+    <input type="checkbox" class="checkbox" disabled="disabled"/>
+    <input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/>
+</pre>
+
+<script type="text/javascript">
+	$(function(){
+		$('.checkbox').checkbox({});
+	});
+</script>
+
 <h2>Copyright and license</h2>
 
 <p>Copyright (C) 2013 Roberto Montresor</p>
@@ -124,8 +171,6 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
     
-
   </body>
 </html>
