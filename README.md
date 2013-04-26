@@ -6,6 +6,9 @@ A checkbox component based on bootstrap framework
 ## Author
 [Roberto Montresor](https://github.com/montrezorro)
 
+## Documentation
+You can find demo and documentation [here](http://montrezorro.github.io/bootstrap-checkbox).
+
 ## Usage
 
 Create your `<input type="checkbox">` with the `.checkbox` class.
