@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Bootstrap-checkbox : A checkbox component based on bootstrap framework" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Bootstrap-checkbox</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/montrezorro/bootstrap-checkbox">View on GitHub</a>
+
+          <h1 id="project_title">Bootstrap-checkbox</h1>
+          <h2 id="project_tagline">A checkbox component based on bootstrap framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/montrezorro/bootstrap-checkbox/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/montrezorro/bootstrap-checkbox/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>bootstrap-checkbox</h1>
+
+<p>A checkbox component based on bootstrap framework</p>
+
+<h2>Author</h2>
+
+<p><a href="https://github.com/montrezorro">Roberto Montresor</a></p>
+
+<h2>Usage</h2>
+
+<p>Create your <code>&lt;input type="checkbox"&gt;</code> with the <code>.checkbox</code> class.</p>
+
+<pre><code>&lt;input type="checkbox" class="chekbox" /&gt;
+&lt;input type="checkbox" class="chekbox" checked="checked"/&gt;
+&lt;input type="checkbox" class="chekbox" disabled="disabled"/&gt;
+&lt;input type="checkbox" class="chekbox" checked="checked" disabled="disabled"/&gt;
+</code></pre>
+
+<p>Enable Bootstrap-checkbox via JavaScript:</p>
+
+<pre><code>$('.checkbox').checkbox();
+</code></pre>
+
+<p>Or just</p>
+
+<pre><code>$('input[type="checkbox"]').checkbox();
+</code></pre>
+
+<h2>Options</h2>
+
+<p>Options can be passed via data attributes or JavaScript.</p>
+
+<pre><code>$('input[type="checkbox"]').checkbox({
+  buttonStyle: 'btn-link',
+  buttonStyleChecked: 'btn-inverse',
+  checkedClass: 'icon-check',
+  uncheckedClass: 'icon-check-empty',
+
+  checked: false,
+  enabled: true
+});
+</code></pre>
+
+<p>You can append or prepend a label via the <code>data-label</code> or <code>data-label-prepend</code> attribute.</p>
+
+<h2>Methods</h2>
+
+<pre><code>$('input[type="checkbox"]').checkbox('click'); // change input's state
+$('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
+</code></pre>
+
+<h2>Copyright and license</h2>
+
+<p>Copyright (C) 2013 Roberto Montresor</p>
+
+<p>Licensed under the MIT license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Bootstrap-checkbox maintained by <a href="https://github.com/montrezorro">montrezorro</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
