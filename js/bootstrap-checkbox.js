@@ -30,6 +30,8 @@
         this.options = $.extend({}, $.fn.checkbox.defaults, this.$element.data(), typeof options == 'object' && options);
         this.buttonStyle = this.options.buttonStyle;
         this.buttonStyleChecked = this.options.buttonStyleChecked;
+        this.defaultState = this.options.defaultState;
+        this.defaultEnabled = this.options.defaultEnabled;
         this.init();
     };
 
@@ -54,9 +56,16 @@
             }
             this.button.addClass(this.buttonStyle);
             
+            if (this.$element.data('defalut-state') != undefined){
+            	this.defaultState = this.$element.data('defalut-state');
+            }
+            if (this.$element.data('defalut-enabled') != undefined){
+            	this.defaultEnabled = this.$element.data('defalut-enabled');
+            }
+            
             this.checkEnabled();
             this.checkChecked();
-			this.checkTabIndex();
+            this.checkTabIndex();
             this.clickListener();
         },
         
@@ -118,9 +127,15 @@
 				_this.$element.click();
 				_this.checkChecked();
         	});
-            this.$element.on('change', function(e) {
-            	_this.checkChecked();
-            });
+		this.$element.on('change', function(e) {
+			_this.checkChecked();
+		});
+		this.$element.parents('form').on('reset', function(e) {
+	            	_this.$element.prop('checked', _this.defaultState);
+	            	_this.$element.prop('disabled', !_this.defaultEnabled);
+	            	_this.checkEnabled();
+	            	_this.checkChecked();
+		});
         },
         
         setOptions: function(option, event){
@@ -179,7 +194,9 @@
         buttonStyle: 'btn-link',
         buttonStyleChecked: null,
         checkedClass: 'cb-icon-check',
-        uncheckedClass: 'cb-icon-check-empty'
+        uncheckedClass: 'cb-icon-check-empty',
+        defaultState: false,
+        defaultEnabled: true
     };
 
 }(window.jQuery);
