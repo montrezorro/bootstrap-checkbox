@@ -119,13 +119,17 @@ $('input[type="checkbox"]').checkbox({
    buttonStyleChecked: 'btn-inverse',
    checkedClass: 'icon-check',
    uncheckedClass: 'icon-check-empty',
-
+   defaultState: false,
+   defaultEnabled: true,
+   
    checked: false,
    enabled: true
 });
 </pre>
 
 <p>You can append or prepend a label via the <code>data-label</code> or <code>data-label-prepend</code> attribute.</p>
+<p>You can set a default state (used when you reset a form) via the `data-default-state` attribute.</p>
+<p>You can set a default abilitation (used when you reset a form) via the `data-default-enabled` attribute.</p>
 
 <h2>Methods</h2>
 
