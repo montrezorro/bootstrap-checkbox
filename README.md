@@ -36,12 +36,16 @@ Options can be passed via data attributes or JavaScript.
       buttonStyleChecked: 'btn-inverse',
       checkedClass: 'icon-check',
       uncheckedClass: 'icon-check-empty',
+      defaultState: false,
+      defaultEnabled: true,
 	  
       checked: false,
       enabled: true
     });
 
 You can append or prepend a label via the `data-label` or `data-label-prepend` attribute.
+You can set a default state (used when you reset a form) via the `data-default-state` attribute.
+You can set a default abilitation (used when you reset a form) via the `data-default-enabled` attribute.
 
 ## Methods
 
