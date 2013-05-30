@@ -180,6 +180,9 @@
                 options = typeof option == 'object' && option;
             if (!data) {
                 $this.data('checkbox', (data = new Checkbox(this, options, event)));
+                if (data.options.constructorCallback != undefined){
+                	data.options.constructorCallback(data.$element, data.button, data.label, data.labelPrepend);
+                }
             } else {
             	if (typeof option == 'string') {
                     data[option](event);
@@ -196,7 +199,8 @@
         checkedClass: 'cb-icon-check',
         uncheckedClass: 'cb-icon-check-empty',
         defaultState: false,
-        defaultEnabled: true
+        defaultEnabled: true,
+        constructorCallback: null
     };
 
 }(window.jQuery);
