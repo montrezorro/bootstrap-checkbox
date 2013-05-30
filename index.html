@@ -42,13 +42,27 @@
 		background-color: #FFFFFF;
 		border: 1px solid #DDDDDD;
 		border-radius: 4px 4px 4px 4px;
-		margin: 15px 0;
+		margin: 15px -17px 15px 0;
 /* 		padding: 39px 19px 14px; */
 		padding: 39px 3px 14px 13px;
 		position: relative;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	}
 	.prettyprint.linenums{
 		box-shadow:40px 0 0 #FBFBFC inset,41px 0 0 #ECECF0 inset,0 0 10px rgba(0, 0, 0, 0.1);
+	}
+	.prettyprint.bs-docs-example pre{
+		background-color: #FFFFFF;
+		border: 0 none;
+		border-radius: 0;
+		box-shadow: none;
+		margin: 0;
+		padding: 20px 0;
+	}
+	
+	#example1 input[type="checkbox"]{
+		float: left;
+		margin-right: 20px;
 	}
     </style>
     <script type="text/javascript">
@@ -119,18 +133,15 @@ $('input[type="checkbox"]').checkbox({
    buttonStyleChecked: 'btn-inverse',
    checkedClass: 'icon-check',
    uncheckedClass: 'icon-check-empty',
-   defaultState: false,
-   defaultEnabled: true,
-   
+   constructorCallback: null,
+
    checked: false,
    enabled: true
 });
 </pre>
 
 <p>You can append or prepend a label via the <code>data-label</code> or <code>data-label-prepend</code> attribute.</p>
-<p>You can set a default state (used when you reset a form) via the <code>data-default-state</code> attribute.</p>
-<p>You can set a default abilitation (used when you reset a form) via the <code>data-default-enabled</code> attribute.</p>
-
+<p>With <code>constructorCallback</code>, you can access (in order) at <code>original input checkbox</code>, <code>created button</code>, <code>created label</code> and <code>created prepended label</code></p>
 <h2>Methods</h2>
 
 <pre class="prettyprint linenums">
@@ -140,15 +151,15 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 
 <h2>Examples</h2>
 
-<pre class="prettyprint bs-docs-example">
+<div class="prettyprint bs-docs-example" id="example1">
     <div>
-	    <input type="checkbox" style="float:left;" />
-	    <input type="checkbox" checked="checked" style="float:left;" />
-	    <input type="checkbox" disabled="disabled" style="float:left;" />
-	    <input type="checkbox" checked="checked" disabled="disabled" style="float:left;" />
+	    <input type="checkbox" />
+	    <input type="checkbox" checked="checked"/>
+	    <input type="checkbox" disabled="disabled"/>
+	    <input type="checkbox" checked="checked" disabled="disabled"/>
 	</div>
     
-    <code>$('input[type="checkbox"]').checkbox();</code>
+    <pre class="prettyprint">$('input[type="checkbox"]').checkbox();</pre>
     
     <div>
 	    <input type="checkbox" class="checkbox" />
@@ -156,7 +167,7 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 	    <input type="checkbox" class="checkbox" disabled="disabled"/>
 	    <input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/>
 	</div>
-</pre>
+</div>
 
 <script type="text/javascript">
 	$(function(){
@@ -180,15 +191,5 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
       </footer>
     </div>
     
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-40548388-1', 'github.io');
-  ga('send', 'pageview');
-
-</script>
   </body>
 </html>
