@@ -18,8 +18,8 @@
 	<script src="javascripts/bootstrap-checkbox/js/bootstrap-checkbox.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="javascripts/bootstrap-checkbox/css/bootstrap-checkbox.css">
 
-    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet"> -->
-    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css" rel="stylesheet"> -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css" rel="stylesheet">
     
     
     <script>
@@ -162,6 +162,7 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 
 <h2>Examples</h2>
 
+<h4>Normal usage</h4>
 <div class="prettyprint bs-docs-example" id="example1">
     <div>
 	    <input type="checkbox" />
@@ -170,7 +171,9 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 	    <input type="checkbox" checked="checked" disabled="disabled"/>
 	</div>
     
-    <pre class="prettyprint">$('input[type="checkbox"]').checkbox();</pre>
+<pre class="prettyprint">
+$('input[type="checkbox"]').checkbox();
+</pre>
     
     <div>
 	    <input type="checkbox" class="checkbox" />
@@ -180,9 +183,193 @@ $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
 	</div>
 </div>
 
+<h4>With Font-Awesome</h4>
+<div class="prettyprint bs-docs-example" id="example2">
+    <div>
+	    <input type="checkbox" />
+	    <input type="checkbox" checked="checked"/>
+	    <input type="checkbox" disabled="disabled"/>
+	    <input type="checkbox" checked="checked" disabled="disabled"/>
+	</div>
+    
+<pre class="prettyprint">
+$('input[type="checkbox"]').checkbox({
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+</pre>
+    
+    <div>
+	    <input type="checkbox" class="checkbox" />
+	    <input type="checkbox" class="checkbox" checked="checked"/>
+	    <input type="checkbox" class="checkbox" disabled="disabled"/>
+	    <input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/>
+	</div>
+</div>
+
+<h4>Size</h4>
+<div class="prettyprint bs-docs-example" id="example3">
+    <div>
+	    <input type="checkbox" class="mini" />
+	    <input type="checkbox" class="small"/>
+	    <input type="checkbox" class="normal"/>
+	    <input type="checkbox" class="large"/>
+	</div>
+    
+<pre class="prettyprint">
+&lt;input type="checkbox" class="mini" /&gt;
+&lt;input type="checkbox" class="small"/&gt;
+&lt;input type="checkbox" class="normal"/&gt;
+&lt;input type="checkbox" class="large"/&gt;
+
+$('input[type="checkbox"].mini').checkbox({
+    buttonStyle: 'btn-link btn-mini',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+
+$('input[type="checkbox"].small').checkbox({
+    buttonStyle: 'btn-link btn-small',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+
+$('input[type="checkbox"].normal').checkbox({
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+
+$('input[type="checkbox"].large').checkbox({
+    buttonStyle: 'btn-link btn-large',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+</pre>
+    
+    <div>
+	    <input type="checkbox" class="checkbox mini" />
+	    <input type="checkbox" class="checkbox small"/>
+	    <input type="checkbox" class="checkbox normal"/>
+	    <input type="checkbox" class="checkbox large"/>
+	</div>
+</div>
+
+<h4>Labels</h4>
+<div class="prettyprint bs-docs-example" id="example4">
+    <div>
+	    <input type="checkbox" data-label="suffix"/>
+		<input type="checkbox" data-label-prepend="prefix"/>
+		<input type="checkbox" data-label="suffix" data-label-prepend="prefix"/>
+	</div>
+    
+<pre class="prettyprint">
+&lt;input type="checkbox" data-label="suffix"/&gt;
+&lt;input type="checkbox" data-label-prepend="prefix"/&gt;
+&lt;input type="checkbox" data-label="suffix" data-label-prepend="prefix"/&gt;
+
+$('input[type="checkbox"]').checkbox({
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+</pre>
+    
+    <div>
+	    <input type="checkbox" class="checkbox" data-label="suffix"/>
+		<input type="checkbox" class="checkbox" data-label-prepend="prefix"/>
+		<input type="checkbox" class="checkbox" data-label="suffix" data-label-prepend="prefix"/>
+	</div>
+</div>
+
+<h4>Button Style</h4>
+<div class="prettyprint bs-docs-example" id="example5">
+    <div>
+	    <input type="checkbox" class="style1"/>
+		<input type="checkbox" class="style2"/>
+		<input type="checkbox" class="style3"/>
+	</div>
+    
+<pre class="prettyprint">
+&lt;input type="checkbox" class="style1"/&gt;
+&lt;input type="checkbox" class="style2"/&gt;
+&lt;input type="checkbox" class="style3"/&gt;
+
+$('input[type="checkbox"].style1').checkbox({
+	buttonStyleChecked: 'btn-success',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+$('input[type="checkbox"].style2').checkbox({
+    buttonStyle: 'btn-base',
+    buttonStyleChecked: 'btn-success',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+$('input[type="checkbox"].style3').checkbox({
+    buttonStyle: 'btn-danger',
+	buttonStyleChecked: 'btn-success',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+</pre>
+    
+    <div>
+	    <input type="checkbox" class="checkbox style1""/>
+		<input type="checkbox" class="checkbox style2"/>
+		<input type="checkbox" class="checkbox style3"/>
+	</div>
+</div>
+
 <script type="text/javascript">
 	$(function(){
-		$('.checkbox').checkbox({});
+		$('#example1 .checkbox').checkbox();
+		
+		$('#example2 .checkbox').checkbox({
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		
+		$('#example3 .checkbox.mini').checkbox({
+			buttonStyle: 'btn-link btn-mini',
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		$('#example3 .checkbox.small').checkbox({
+			buttonStyle: 'btn-link btn-small',
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		$('#example3 .checkbox.normal').checkbox({
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		$('#example3 .checkbox.large').checkbox({
+			buttonStyle: 'btn-link btn-large',
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		
+		$('#example4 .checkbox').checkbox({
+			checkedClass: 'icon-check',
+			uncheckedClass: 'icon-check-empty'
+		});
+		
+		$('#example5 .style1').checkbox({
+			buttonStyleChecked: 'btn-success',
+		    checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
+		$('#example5 .style2').checkbox({
+		    buttonStyle: 'btn-base',
+			buttonStyleChecked: 'btn-success',
+		    checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
+		$('#example5 .style3').checkbox({
+		    buttonStyle: 'btn-danger',
+			buttonStyleChecked: 'btn-success',
+		    checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
 	});
 </script>
 
