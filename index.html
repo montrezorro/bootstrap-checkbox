@@ -71,6 +71,10 @@
 		padding: 20px 0;
 	}
 	
+	.prettyprint form{
+		background-color: transparent;
+	}
+	
 	#example1 input[type="checkbox"]{
 		float: left;
 		margin-right: 20px;
@@ -134,6 +138,17 @@ $('.checkbox').checkbox();
 $('input[type="checkbox"]').checkbox();
 </pre>
 
+<p>You obtain:</p>
+
+<div class="prettyprint bs-docs-example" id="example">
+    <div>
+	    <input type="checkbox" class="checkbox" />
+	    <input type="checkbox" class="checkbox" checked="checked"/>
+	    <input type="checkbox" class="checkbox" disabled="disabled"/>
+	    <input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/>
+	</div>
+</div>
+
 <h2>Options</h2>
 
 <p>Options can be passed via data attributes or JavaScript.</p>
@@ -145,6 +160,8 @@ $('input[type="checkbox"]').checkbox({
    checkedClass: 'icon-check',
    uncheckedClass: 'icon-check-empty',
    constructorCallback: null,
+   defaultState: false,
+   defaultEnabled: true,
 
    checked: false,
    enabled: true
@@ -153,6 +170,7 @@ $('input[type="checkbox"]').checkbox({
 
 <p>You can append or prepend a label via the <code>data-label</code> or <code>data-label-prepend</code> attribute.</p>
 <p>With <code>constructorCallback</code>, you can access (in order) at <code>original input checkbox</code>, <code>created button</code>, <code>created label</code> and <code>created prepended label</code></p>
+<p>With <code>defaultState</code> and <code>defaultEnabled</code> you can set a default state (checked or not) and a default abilitation on reset of the form</p>
 <h2>Methods</h2>
 
 <pre class="prettyprint linenums">
@@ -185,13 +203,6 @@ $('input[type="checkbox"]').checkbox();
 
 <h4>With Font-Awesome</h4>
 <div class="prettyprint bs-docs-example" id="example2">
-    <div>
-	    <input type="checkbox" />
-	    <input type="checkbox" checked="checked"/>
-	    <input type="checkbox" disabled="disabled"/>
-	    <input type="checkbox" checked="checked" disabled="disabled"/>
-	</div>
-    
 <pre class="prettyprint">
 $('input[type="checkbox"]').checkbox({
     checkedClass: 'icon-check',
@@ -209,13 +220,6 @@ $('input[type="checkbox"]').checkbox({
 
 <h4>Size</h4>
 <div class="prettyprint bs-docs-example" id="example3">
-    <div>
-	    <input type="checkbox" class="mini" />
-	    <input type="checkbox" class="small"/>
-	    <input type="checkbox" class="normal"/>
-	    <input type="checkbox" class="large"/>
-	</div>
-    
 <pre class="prettyprint">
 &lt;input type="checkbox" class="mini" /&gt;
 &lt;input type="checkbox" class="small"/&gt;
@@ -256,12 +260,6 @@ $('input[type="checkbox"].large').checkbox({
 
 <h4>Labels</h4>
 <div class="prettyprint bs-docs-example" id="example4">
-    <div>
-	    <input type="checkbox" data-label="suffix"/>
-		<input type="checkbox" data-label-prepend="prefix"/>
-		<input type="checkbox" data-label="suffix" data-label-prepend="prefix"/>
-	</div>
-    
 <pre class="prettyprint">
 &lt;input type="checkbox" data-label="suffix"/&gt;
 &lt;input type="checkbox" data-label-prepend="prefix"/&gt;
@@ -282,12 +280,6 @@ $('input[type="checkbox"]').checkbox({
 
 <h4>Button Style</h4>
 <div class="prettyprint bs-docs-example" id="example5">
-    <div>
-	    <input type="checkbox" class="style1"/>
-		<input type="checkbox" class="style2"/>
-		<input type="checkbox" class="style3"/>
-	</div>
-    
 <pre class="prettyprint">
 &lt;input type="checkbox" class="style1"/&gt;
 &lt;input type="checkbox" class="style2"/&gt;
@@ -319,9 +311,46 @@ $('input[type="checkbox"].style3').checkbox({
 	</div>
 </div>
 
+<h4>Form reset</h4>
+<div class="prettyprint bs-docs-example" id="example6">
+<pre class="prettyprint">
+&lt;input type="checkbox" class="reset-data" data-defalut-state="true"/&gt;
+&lt;input type="checkbox" class="reset-data" data-defalut-enabled="false"/&gt;
+&lt;input type="checkbox" class="reset-state"/&gt;
+&lt;input type="checkbox" class="reset-enabled"/&gt;
+
+$('input[type="checkbox"].reset-data').checkbox({
+	checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+$('input[type="checkbox"].reset-state').checkbox({
+    defalutState:true,
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+$('input[type="checkbox"].reset-enabled').checkbox({
+    defalutEnabled:false,
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+</pre>
+    
+    <div>
+	    <form>
+		    <input type="checkbox" class="checkbox reset-data" data-default-state="true"/>
+			<input type="checkbox" class="checkbox reset-data" data-default-enabled="false"/>
+			<input type="checkbox" class="checkbox reset-state"/>
+			<input type="checkbox" class="checkbox reset-enabled"/>
+			<button type="button" class="btn toggleCheckboxEnabled">Toggle enabled</button>
+			<button type="reset" class="btn">Reset Form</button>
+		</form>
+	</div>
+</div>
+
+
 <script type="text/javascript">
 	$(function(){
-		$('#example1 .checkbox').checkbox();
+		$('#example .checkbox,#example1 .checkbox').checkbox();
 		
 		$('#example2 .checkbox').checkbox({
 			checkedClass: 'icon-check',
@@ -370,6 +399,27 @@ $('input[type="checkbox"].style3').checkbox({
 		    checkedClass: 'icon-check',
 		    uncheckedClass: 'icon-check-empty'
 		});
+		
+		$('#example6 .checkbox.reset-data').checkbox({
+			checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
+		$('#example6 .checkbox.reset-state').checkbox({
+		    defaultState: true,
+		    checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
+		$('#example6 .checkbox.reset-enabled').checkbox({
+		    defaultEnabled: false,
+		    checkedClass: 'icon-check',
+		    uncheckedClass: 'icon-check-empty'
+		});
+		$('#example6 .toggleCheckboxEnabled').click(function(){
+			$('#example6 .checkbox').each(function(){
+				$(this).checkbox('toggleEnabled');
+			});
+		});
+		
 	});
 </script>
 
