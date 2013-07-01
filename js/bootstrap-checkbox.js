@@ -131,12 +131,12 @@
 			_this.checkChecked();
 		});
 		this.$element.parents('form').on('reset', function(e) {
-            	_this.$element.prop('checked', _this.defaultState);
-            	_this.$element.prop('disabled', !_this.defaultEnabled);
-            	_this.checkEnabled();
-            	_this.checkChecked();
-            	e.preventDefault();
-			});
+	            	_this.$element.prop('checked', _this.defaultState);
+	            	_this.$element.prop('disabled', !_this.defaultEnabled);
+	            	_this.checkEnabled();
+	            	_this.checkChecked();
+	            	e.preventDefault();
+		});
         },
         
         setOptions: function(option, event){
