@@ -56,11 +56,11 @@
             }
             this.button.addClass(this.buttonStyle);
             
-            if (this.$element.data('defalut-state') != undefined){
-            	this.defaultState = this.$element.data('defalut-state');
+            if (this.$element.data('default-state') != undefined){
+            	this.defaultState = this.$element.data('default-state');
             }
-            if (this.$element.data('defalut-enabled') != undefined){
-            	this.defaultEnabled = this.$element.data('defalut-enabled');
+            if (this.$element.data('default-enabled') != undefined){
+            	this.defaultEnabled = this.$element.data('default-enabled');
             }
             
             this.checkEnabled();
@@ -135,6 +135,7 @@
 	            	_this.$element.prop('disabled', !_this.defaultEnabled);
 	            	_this.checkEnabled();
 	            	_this.checkChecked();
+	            	e.preventDefault();
 		});
         },
         
