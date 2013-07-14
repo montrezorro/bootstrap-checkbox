@@ -72,7 +72,7 @@
         getTemplate: function() {
             var template = 
             	'<span class="button-checkbox bootstrap-checkbox">' +
-            		'<button class="btn clearfix">' +
+            		'<button type="button" class="btn clearfix">' +
 	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
 	                    '<span class="icon '+this.options.uncheckedClass+'"></span>' +
 	                '</button>' +
