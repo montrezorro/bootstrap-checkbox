@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 .bootstrap-checkbox > button.btn{
-  padding:7px 0 4px 2px;
+	padding:7px 0 4px 2px;
 	width:28px;
 }
 .bootstrap-checkbox > button.btn.btn-large{
