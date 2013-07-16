@@ -347,7 +347,6 @@ $('input[type="checkbox"].reset-enabled').checkbox({
 	</div>
 </div>
 
-
 <script type="text/javascript">
 	$(function(){
 		$('#example .checkbox,#example1 .checkbox').checkbox();
@@ -422,6 +421,101 @@ $('input[type="checkbox"].reset-enabled').checkbox({
 		
 	});
 </script>
+
+
+
+
+
+<style>
+	#mapLayer{
+		opacity:0;
+		filter:alpha(opacity=0);
+		position:absolute;
+		z-index:0;
+		display:block;
+		visibility:visible;
+		border-radius:4px;
+		background-color:#000;
+		width:100%;
+		height:100%;
+		left:0;
+		top:0;
+		transition:all .2s ease-in-out 0s;
+		-webkit-transition:all .2s ease-in-out 0s;
+		-moz-transition:all .2s ease-in-out 0s;
+		-o-transition:all .2s ease-in-out 0s;
+	}
+	#mapLayer.in{opacity:0.8;filter:alpha(opacity=80);z-index:1030;}
+	
+	#mapLayer .loadingText{
+		color:#FFF;
+		text-align:center;
+		text-decoration:none;
+		position:absolute;
+		top:50%;
+		left:50%;
+		height:20px;
+		width:200px;
+		margin-left:-100px;
+		margin-top:-10px;
+	}
+	#mapDateTime{
+		position:absolute;
+		right:6px;
+		bottom:0;
+		font-size:10px;
+	}
+	
+	#chart_div_container{
+		background-color:#FFF;
+		border:1px solid #DDD;
+		border-radius:4px;
+		box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
+		width:656px;
+		height:450px;
+		position:relative;
+		overflow:hidden;
+	}
+</style>
+</br>
+</br>
+<h4>Visitors</h4>
+<div id="chart_div_container">
+	<div id="chart_div" style="width:100%;height:100%;z-index:1;"></div>
+	<div id="mapLayer" class="in"><div class="loadingText">Loading data...</div></div>
+	<div id="mapDateTime" style="z-index:2;"></div>
+</div>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+	google.load('visualization', '1', {'packages': ['geochart']});
+	google.setOnLoadCallback(drawRegionsMap);
+	var chart = null;
+	
+	function successMapQuery(obj){
+		var data = google.visualization.arrayToDataTable(obj.rows);
+		//stroke: #99c9db; fill: #aadff3;
+		//stroke: #057fb3; fill: #058dc7;
+		var options = { colorAxis: {colors: ['#aadff3', '#058dc7']} };
+		chart.draw(data, options);
+		$('#mapDateTime').html('Data from Google Analytics ©. Last update: '+obj.datetime+' UTC');
+		$('#mapLayer').removeClass('in');
+	}
+	
+	function drawRegionsMap(){
+		var mapContainer = $('#chart_div');
+		chart = new google.visualization.GeoChart(mapContainer[0]);
+		chart.draw(google.visualization.arrayToDataTable([["country","visitors"]]), {});
+		
+		$.ajax({
+			url:'http://www.robertomontresor.it/analytics/bootstrap-checkbox/ajax_query_data.php',
+// 			url:'http://localhost:9090/rm/ajax_query_data.php',
+			dataType:'jsonp',
+			async:true,
+			success:successMapQuery
+		});
+	}
+</script>
+</br>
 
 <h2>Copyright and license</h2>
 
