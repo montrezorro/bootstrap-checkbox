@@ -103,21 +103,22 @@
 		},
 		
 		checkChecked: function() {
+			var whitePattern = /\s/g, replaceChar = '.';
 			if (this.$element.is(':checked')) {
-				this.button.find('span.'+this.options.checkedClass).show();
-				this.button.find('span.'+this.options.uncheckedClass).hide();
+				this.button.find('span.'+this.options.checkedClass.replace(whitePattern, replaceChar)).show();
+				this.button.find('span.'+this.options.uncheckedClass.replace(whitePattern, replaceChar)).hide();
 				if (this.buttonStyleChecked){
 					this.button.addClass(this.buttonStyleChecked);
 					this.button.removeClass(this.buttonStyle);
 				}
-        	} else {
-        		this.button.find('span.'+this.options.checkedClass).hide();
-        		this.button.find('span.'+this.options.uncheckedClass).show();
-        		if (this.buttonStyleChecked){
-        			this.button.addClass(this.buttonStyle);
-        			this.button.removeClass(this.buttonStyleChecked);
+        		} else {
+        			this.button.find('span.'+this.options.checkedClass.replace(whitePattern, replaceChar)).hide();
+        			this.button.find('span.'+this.options.uncheckedClass.replace(whitePattern, replaceChar)).show();
+        			if (this.buttonStyleChecked){
+        				this.button.addClass(this.buttonStyle);
+        				this.button.removeClass(this.buttonStyleChecked);
+        			}
         		}
-        	}
 		},
 
         clickListener: function() {
