@@ -90,13 +90,15 @@
             var templateStart = '';
             var templateInner = '';
             var templateEnd = '';
+            var extraClass = '';
             
             var label = this.$element.data('label') ? '<span class="label-checkbox">'+this.$element.data('label')+'</span>' : '',
                 labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">'+this.$element.data('label-prepend')+'</span>' : '';
  
             if (this.$element.data('label') || this.$element.data('label-prepend')) {
                 if (this.displayAsButton == true){
-                    templateInner = label; //only support label after icon 
+                    templateInner = label; //only support label after icon
+                     extraClass = "bootstrap-checkboxbutton";
                 }else{
                     templateStart = '<label class="checkbox bootstrap-checkbox">' + labelPrepend;
                     templateEnd = label +'</label>';
@@ -106,7 +108,7 @@
             
             var template = 
                 templateStart+
-                '<span class="button-checkbox bootstrap-checkbox">' +
+                '<span class="button-checkbox bootstrap-checkbox '+extraClass+'">' +
                     '<button type="button" class="btn clearfix">' +
                         '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
                         '<span class="icon '+this.options.uncheckedClass+'"></span>' +
