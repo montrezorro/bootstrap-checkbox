@@ -4,6 +4,18 @@
 	padding:7px 0 4px 2px;
 	width:28px;
 }
+.bootstrap-checkbox > button.btn.displayAsButton{
+	width:auto!important;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.label-checkbox{
+	padding:0 8px 0 4px;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.icon{
+	margin: 2px 4px;
+}
+.bootstrap-checkbox > button.btn.displayAsButton > span.label-prepend-checkbox{
+	padding:0 4px 0 8px;
+}
 .bootstrap-checkbox > button.btn.btn-large{
 	padding:10px 0 6px 2px;
 	width:36px;

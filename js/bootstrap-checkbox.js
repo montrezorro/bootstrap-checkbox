@@ -28,6 +28,7 @@
         this.label = null;
         this.labelPrepend = null;
         this.options = $.extend({}, $.fn.checkbox.defaults, this.$element.data(), typeof options == 'object' && options);
+        this.displayAsButton = this.options.displayAsButton;
         this.buttonStyle = this.options.buttonStyle;
         this.buttonStyleChecked = this.options.buttonStyleChecked;
         this.defaultState = this.options.defaultState;
@@ -62,6 +63,9 @@
             if (this.$element.data('default-enabled') != undefined){
             	this.defaultEnabled = this.$element.data('default-enabled');
             }
+            if (this.$element.data('display-as-button') != undefined){
+            	this.displayAsButton = this.$element.data('display-as-button');
+            }
             
             this.checkEnabled();
             this.checkChecked();
@@ -70,18 +74,21 @@
         },
         
         getTemplate: function() {
+            var additionalButtonStyle = this.displayAsButton ? ' displayAsButton' : '',
+            	label = this.$element.data('label') ? '<span class="label-checkbox">'+this.$element.data('label')+'</span>' : '',
+            	labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">'+this.$element.data('label-prepend')+'</span>' : '';
+            	
             var template = 
             	'<span class="button-checkbox bootstrap-checkbox">' +
-            		'<button type="button" class="btn clearfix">' +
+            		'<button type="button" class="btn clearfix'+additionalButtonStyle+'">' +
+            			((this.$element.data('label-prepend') && this.displayAsButton) ? labelPrepend : '')+
 	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
 	                    '<span class="icon '+this.options.uncheckedClass+'"></span>' +
+	                    ((this.$element.data('label') && this.displayAsButton) ? label : '')+
 	                '</button>' +
 	            '</span>';
             
-            var label = this.$element.data('label') ? '<span class="label-checkbox">'+this.$element.data('label')+'</span>' : '',
-            	labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">'+this.$element.data('label-prepend')+'</span>' : '';
-
-            if (this.$element.data('label') || this.$element.data('label-prepend')) {
+            if (!this.displayAsButton && (this.$element.data('label') || this.$element.data('label-prepend'))) {
             	template =
             		'<label class="checkbox bootstrap-checkbox">' +
             			labelPrepend + template + label+
@@ -108,15 +115,15 @@
 				this.button.find('span.'+this.options.checkedClass.replace(whitePattern, replaceChar)).show();
 				this.button.find('span.'+this.options.uncheckedClass.replace(whitePattern, replaceChar)).hide();
 				if (this.buttonStyleChecked){
-					this.button.addClass(this.buttonStyleChecked);
 					this.button.removeClass(this.buttonStyle);
+					this.button.addClass(this.buttonStyleChecked);
 				}
         		} else {
         			this.button.find('span.'+this.options.checkedClass.replace(whitePattern, replaceChar)).hide();
         			this.button.find('span.'+this.options.uncheckedClass.replace(whitePattern, replaceChar)).show();
         			if (this.buttonStyleChecked){
-        				this.button.addClass(this.buttonStyle);
         				this.button.removeClass(this.buttonStyleChecked);
+        				this.button.addClass(this.buttonStyle);
         			}
         		}
 		},
@@ -196,7 +203,8 @@
     };
 
     $.fn.checkbox.defaults = {
-        buttonStyle: 'btn-link',
+    	displayAsButton: false,
+    	buttonStyle: 'btn-link',
         buttonStyleChecked: null,
         checkedClass: 'cb-icon-check',
         uncheckedClass: 'cb-icon-check-empty',
