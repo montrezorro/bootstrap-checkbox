@@ -85,3 +85,14 @@ label.bootstrap-checkbox.disabled{
 .bootstrap-checkbox button.btn:active > span.cb-icon-check-empty{
 	background-position: -24px -25px;
 }
+
+.bootstrap-checkbox button.btn > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox.disabled button.btn:hover > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox.disabled button.btn:active > span.cb-icon-check-indeterminate{
+	background-position: -48px -1px;
+}
+.bootstrap-checkbox button.btn:hover > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox button.btn:focus > span.cb-icon-check-indeterminate,
+.bootstrap-checkbox button.btn:active > span.cb-icon-check-indeterminate{
+	background-position: -48px -25px;
+}
