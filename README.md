@@ -13,10 +13,10 @@ You can find demo and documentation [here](http://montrezorro.github.io/bootstra
 
 Create your `<input type="checkbox">` with the `.checkbox` class.
 
-    <input type="checkbox" class="chekbox" />
-    <input type="checkbox" class="chekbox" checked="checked"/>
-    <input type="checkbox" class="chekbox" disabled="disabled"/>
-    <input type="checkbox" class="chekbox" checked="checked" disabled="disabled"/>
+    <input type="checkbox" class="checkbox" />
+    <input type="checkbox" class="checkbox" checked="checked"/>
+    <input type="checkbox" class="checkbox" disabled="disabled"/>
+    <input type="checkbox" class="checkbox" checked="checked" disabled="disabled"/>
 	
     
 Enable Bootstrap-checkbox via JavaScript:
@@ -34,8 +34,8 @@ Options can be passed via data attributes or JavaScript.
     $('input[type="checkbox"]').checkbox({
       buttonStyle: 'btn-link',
       buttonStyleChecked: 'btn-inverse',
-      checkedClass: 'icon-check',
-      uncheckedClass: 'icon-check-empty',
+      checkedClass: 'fa fa-check',
+      uncheckedClass: 'fa fa-square-o',
       defaultState: false,
       defaultEnabled: true,
 	  
