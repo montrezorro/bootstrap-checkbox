@@ -45,7 +45,7 @@
             this.$element.hide();
             this.$element.attr('autocomplete', 'off');
             var classList = this.$element.attr('class') !== undefined ? this.$element.attr('class').split(/\s+/) : '';
-            template = this.getTemplate();
+            var template = this.getTemplate();
             this.$element.after(template);
             this.$newElement = this.$element.next('.bootstrap-checkbox');
             this.button = this.$newElement.find('button');
@@ -89,7 +89,7 @@
             	'<span class="button-checkbox bootstrap-checkbox">' +
             		'<button type="button" class="btn clearfix'+additionalButtonStyle+'">' +
             			((this.$element.data('label-prepend') && this.displayAsButton) ? labelPrepend : '')+
-	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"><span class="outside-checkmark"></span></span>' +
+	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
 	                    '<span class="icon '+this.options.uncheckedClass+'"></span>' +
 	                    '<span class="icon '+this.options.indeterminateClass+'" style="display:none;"></span>' +
 	                    ((this.$element.data('label') && this.displayAsButton) ? label : '')+
