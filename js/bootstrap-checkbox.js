@@ -98,7 +98,7 @@
             
             if (!this.displayAsButton && (this.$element.data('label') || this.$element.data('label-prepend'))) {
             	template =
-            		'<label class="checkbox bootstrap-checkbox">' +
+            		'<label class="'+this.options.labelClass+'">' +
             			labelPrepend + template + label+
 		            '</label>';
             }
@@ -143,6 +143,16 @@
 				if (this.buttonStyleChecked){
 					this.button.removeClass(this.buttonStyleChecked);
 					this.button.addClass(this.buttonStyle);
+				}
+			}
+			
+			if (this.$element.is(':checked')) {
+				if (this.options.labelClassChecked){
+					$(this.$element).next("label").addClass(this.options.labelClassChecked);
+				}
+			} else {
+				if (this.options.labelClassChecked){
+					$(this.$element).next("label").removeClass(this.options.labelClassChecked);
 				}
 			}
 		},
@@ -230,7 +240,7 @@
             } else {
             	if (typeof option == 'string') {
                     data[option](event);
-                } else {
+                } else if (typeof option != 'undefined') {
                 	data.setOptions(option, event);
                 }
             }
@@ -247,7 +257,9 @@
         indeterminateClass: 'cb-icon-check-indeterminate',
         defaultState: false,
         defaultEnabled: true,
-        constructorCallback: null
+        constructorCallback: null,
+	labelClass: "checkbox bootstrap-checkbox",
+	labelClassChecked: "active"
     };
 
 }(window.jQuery);
