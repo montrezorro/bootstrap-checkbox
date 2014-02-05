@@ -223,6 +223,11 @@
         toggleEnabled: function(event){
         	this.$element.attr('disabled', !this.$element.is(':disabled'));
         	this.checkEnabled();
+        },
+        
+        refresh: function(event){
+        	this.checkEnabled();
+        	this.checkChecked();
         }
 
     };
