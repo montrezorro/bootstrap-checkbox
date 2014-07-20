@@ -54,6 +54,6 @@ You can set a default abilitation (used when you reset a form) via the `data-def
     
 ## Copyright and license
 
-Copyright (C) 2013 Roberto Montresor
+Copyright (C) 2014 Roberto Montresor
 
-Licensed under the MIT license.
+Licensed under the Apache License 2.0.
