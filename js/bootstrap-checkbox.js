@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-checkbox - v.1.0.0
+ * bootstrap-checkbox - v.1.0.1
  * ===========================================================
  * Copyright 2014 Roberto Montresor
  *
@@ -28,12 +28,6 @@
         this.label = null;
         this.labelPrepend = null;
         this.options = $.extend({}, $.fn.checkbox.defaults, this.$element.data(), typeof options == 'object' && options);
-        this.displayAsButton = this.options.displayAsButton;
-        this.buttonStyle = this.options.buttonStyle;
-        this.buttonStyleChecked = this.options.buttonStyleChecked;
-        this.defaultState = this.options.defaultState;
-        this.defaultEnabled = this.options.defaultEnabled;
-        this.indeterminate = this.options.indeterminate;
         this.init();
     };
 
@@ -44,59 +38,61 @@
         init: function (e) {
             this.$element.hide();
             this.$element.attr('autocomplete', 'off');
-            var classList = this.$element.attr('class') !== undefined ? this.$element.attr('class').split(/\s+/) : '';
-            var template = this.getTemplate();
-            this.$element.after(template);
-            this.$newElement = this.$element.next('.bootstrap-checkbox');
-            this.button = this.$newElement.find('button');
-            this.label = this.$newElement.find('span.label-checkbox');
-            this.labelPrepend = this.$newElement.find('span.label-prepend-checkbox');
-            for (var i = 0; i < classList.length; i++) {
-                if(classList[i] != 'checkbox') {
-                    this.$newElement.addClass(classList[i]);
-                }
-            }
-            this.button.addClass(this.buttonStyle);
             
-            if (this.$element.data('default-state') != undefined){
-            	this.defaultState = this.$element.data('default-state');
-            }
-            if (this.$element.data('default-enabled') != undefined){
-            	this.defaultEnabled = this.$element.data('default-enabled');
-            }
-            if (this.$element.data('display-as-button') != undefined){
-            	this.displayAsButton = this.$element.data('display-as-button');
-            }
-            if (this.$element.data('indeterminate') != undefined){
-            	this.indeterminate = this.$element.data('indeterminate');
-            }
-            
-            if (this.indeterminate)
-            	this.$element.prop('indeterminate', true);
-            
-            this.checkEnabled();
-            this.checkChecked();
-            this.checkTabIndex();
-            this.clickListener();
+            this._createButtons();
+        },
+        
+        _createButtons: function(){
+        	var classList = this.$element.attr('class') !== undefined ? this.$element.attr('class').split(/\s+/) : '';
+			var template = this.getTemplate();
+        	this.$element.after(template);
+			this.$newElement = this.$element.next('.bootstrap-checkbox');
+			this.button = this.$newElement.find('button');
+			this.label = this.$newElement.find('span.label-checkbox');
+			this.labelPrepend = this.$newElement.find('span.label-prepend-checkbox');
+			for (var i = 0; i < classList.length; i++) {
+			    if(classList[i] != 'checkbox') {
+			        this.$newElement.addClass(classList[i]);
+			    }
+			}
+			this.button.addClass(this.options.buttonStyle);
+			
+			if (this.$element.data('default-state') != undefined){
+				this.options.defaultState = this.$element.data('default-state');
+			}
+			if (this.$element.data('default-enabled') != undefined){
+				this.options.defaultEnabled = this.$element.data('default-enabled');
+			}
+			if (this.$element.data('display-as-button') != undefined){
+				this.options.displayAsButton = this.$element.data('display-as-button');
+			}
+			
+			if (this.options.indeterminate)
+				this.$element.prop('indeterminate', true);
+			
+			this.checkEnabled();
+			this.checkChecked();
+			this.checkTabIndex();
+			this.clickListener();
         },
         
         getTemplate: function() {
-            var additionalButtonStyle = this.displayAsButton ? ' displayAsButton' : '',
+            var additionalButtonStyle = this.options.displayAsButton ? ' displayAsButton' : '',
             	label = this.$element.data('label') ? '<span class="label-checkbox">'+this.$element.data('label')+'</span>' : '',
             	labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">'+this.$element.data('label-prepend')+'</span>' : '';
             	
             var template = 
             	'<span class="button-checkbox bootstrap-checkbox">' +
             		'<button type="button" class="btn clearfix'+additionalButtonStyle+'">' +
-            			((this.$element.data('label-prepend') && this.displayAsButton) ? labelPrepend : '')+
+            			((this.$element.data('label-prepend') && this.options.displayAsButton) ? labelPrepend : '')+
 	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
 	                    '<span class="icon '+this.options.uncheckedClass+'"></span>' +
 	                    '<span class="icon '+this.options.indeterminateClass+'" style="display:none;"></span>' +
-	                    ((this.$element.data('label') && this.displayAsButton) ? label : '')+
+	                    ((this.$element.data('label') && this.options.displayAsButton) ? label : '')+
 	                '</button>' +
 	            '</span>';
             
-            if (!this.displayAsButton && (this.$element.data('label') || this.$element.data('label-prepend'))) {
+            if (!this.options.displayAsButton && (this.$element.data('label') || this.$element.data('label-prepend'))) {
             	template =
             		'<label class="'+this.options.labelClass+'">' +
             			labelPrepend + template + label+
@@ -135,14 +131,14 @@
 			}
 			
 			if (this.$element.is(':checked')) {
-				if (this.buttonStyleChecked){
-					this.button.removeClass(this.buttonStyle);
-					this.button.addClass(this.buttonStyleChecked);
+				if (this.options.buttonStyleChecked){
+					this.button.removeClass(this.options.buttonStyle);
+					this.button.addClass(this.options.buttonStyleChecked);
 				}
 			} else {
-				if (this.buttonStyleChecked){
-					this.button.removeClass(this.buttonStyleChecked);
-					this.button.addClass(this.buttonStyle);
+				if (this.options.buttonStyleChecked){
+					this.button.removeClass(this.options.buttonStyleChecked);
+					this.button.addClass(this.options.buttonStyle);
 				}
 			}
 			
@@ -165,20 +161,20 @@
 				_this.$element[0].click();
 				_this.checkChecked();
         	});
-		this.$element.on('change', function(e) {
-			_this.checkChecked();
-		});
-		this.$element.parents('form').on('reset', function(e) {
-	        if (_this.defaultState == null){
-	        	_this.$element.prop('indeterminate', true);
-	        } else {
-	        	_this.$element.prop('checked', _this.defaultState);
-	        }
-        	_this.$element.prop('disabled', !_this.defaultEnabled);
-        	_this.checkEnabled();
-        	_this.checkChecked();
-        	e.preventDefault();
-		});
+			this.$element.on('change', function(e) {
+				_this.checkChecked();
+			});
+			this.$element.parents('form').on('reset', function(e) {
+		        if (_this.options.defaultState == null){
+		        	_this.$element.prop('indeterminate', true);
+		        } else {
+		        	_this.$element.prop('checked', _this.options.defaultState);
+		        }
+	        	_this.$element.prop('disabled', !_this.options.defaultEnabled);
+	        	_this.checkEnabled();
+	        	_this.checkChecked();
+	        	e.preventDefault();
+			});
         },
         
         setOptions: function(option, event){
@@ -228,8 +224,16 @@
         refresh: function(event){
         	this.checkEnabled();
         	this.checkChecked();
-        }
-
+        },
+        
+        update: function(options){
+        	if (!this.$element.next().find('.bootstrap-checkbox'))
+        		return;
+        	
+        	this.options = $.extend({}, this.options, options);
+        	this.$element.next().remove();
+        	this._createButtons();
+       }
     };
 
     $.fn.checkbox = function(option, event) {
