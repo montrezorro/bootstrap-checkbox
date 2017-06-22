@@ -11,6 +11,8 @@ You can find demo and documentation [here](http://montrezorro.github.io/bootstra
 
 ## Usage
 
+Remember to include both the .js and the .css in your HTML header.
+
 Create your `<input type="checkbox">` with the `.checkbox` class.
 
     <input type="checkbox" class="checkbox" />
