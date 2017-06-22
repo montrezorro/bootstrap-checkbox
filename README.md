@@ -51,6 +51,8 @@ You can set a default abilitation (used when you reset a form) via the `data-def
 
     $('input[type="checkbox"]').checkbox('click'); // change input's state
     $('input[type="checkbox"]').checkbox('toggleEnabled'); // change input's enabled
+    $('input[type="checkbox"]').checkbox('check'); // change input's state to checked
+    $('input[type="checkbox"]').checkbox('unCheck'); // change input's state to unchecked
     
 ## Copyright and license
 

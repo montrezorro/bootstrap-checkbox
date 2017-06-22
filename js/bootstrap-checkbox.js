@@ -233,7 +233,19 @@
         	this.options = $.extend({}, this.options, options);
         	this.$element.next().remove();
         	this._createButtons();
-       }
+        },
+        
+        check: function(event){
+        	this.$element.prop("checked", true);
+        	this.$element.prop("indeterminate", false);
+        	this.checkChecked();
+        },
+        
+        unCheck: function(event){
+        	this.$element.prop("checked", false);
+        	this.$element.prop("indeterminate", false);
+        	this.checkChecked();
+        }
     };
 
     $.fn.checkbox = function(option, event) {
