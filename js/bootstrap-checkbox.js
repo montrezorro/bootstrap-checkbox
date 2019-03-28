@@ -82,7 +82,7 @@
             	labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">'+this.$element.data('label-prepend')+'</span>' : '';
             	
             var template = 
-            	'<span class="button-checkbox bootstrap-checkbox">' +
+            	'<span class="button-checkbox bootstrap-checkbox"' + (typeof this.$element.attr('title') !== 'undefined' ? ' title="' + this.$element.attr('title') + '"' : '') + '>' +
             		'<button type="button" class="btn clearfix'+additionalButtonStyle+'">' +
             			((this.$element.data('label-prepend') && this.options.displayAsButton) ? labelPrepend : '')+
 	                    '<span class="icon '+this.options.checkedClass+'" style="display:none;"></span>' +
